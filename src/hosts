@@ -1,0 +1,12 @@
+# list all servers in "rendering_farm" group
+
+
+[rendering_farm]
+localhost
+#render-demo.example.com              ansible_port=22 ansible_user=root
+#render-[00001:10000].example.com
+#render-[a:z].example.com
+
+
+
+

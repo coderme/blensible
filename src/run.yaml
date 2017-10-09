@@ -1,0 +1,56 @@
+---
+
+
+- hosts: rendering_farm
+  tasks:
+          - name: install/upgrade blender
+            apt:
+                    name: blender
+                    state: latest
+            when: ansible_pkg_mgr  ==  'apt'
+
+          - name: install blender
+            shell: pkg_add blender
+            when: ansible_os_family == "OpenBSD"
+
+          - name: install blender
+            shell: pkg install blender
+            when: ansible_os_family == "FreeBSD"
+
+          - name: create render_directory folder
+            file:
+                    path: "{{ render_directory }}"
+                    state: directory
+
+          - name: copy .blend file to be rendered
+            copy:
+                    src: "{{ blended_file }}"
+                    dest: "{{ render_directory | dirname }}/{{ blended_file | basename }}"
+            register: blended
+
+          - name: distribute frames on all the farm
+            shell: >
+                    blender -b -a 
+                    {{ blended.dest }}
+                    -o {{ render_directory }}
+                    -t {{ threads | default('0') }}
+                    -F {{ output_format | default('PNG') }}
+                    -s {{ item.start }} -e {{ item.end }} 
+            with_items: "{{ frames_count | default(0) | make_range( rendering_farm | count ) }}"
+
+          - name: fetch rendered frames
+            fetch:
+                    src: "{{ item }}"
+                    dest: "{{ dest_directory }}/{{ item | basename }}"
+            with_fileglob:
+                    - "{{ render_directory }}/*"
+
+
+
+
+
+
+
+
+
+

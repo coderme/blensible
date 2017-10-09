@@ -1,0 +1,32 @@
+# Customize "Blender" rendering options here
+
+
+---
+# file to be rendered
+blended_file: /path/to/file.blend
+
+# total frames in blended_file
+frames_count: 2000000
+
+# 0 = number of cpus
+threads: 0
+
+# supported values: TGA RAWTGA JPEG IRIS IRIZ AVIRAW AVIJPEG PNG BMP
+output_format: PNG
+
+# where to save rendered frames
+render_directory: /data/rendered
+
+# where to aggregate all renderd frames ( localhost )
+dest_directory: /data/rendered
+
+
+
+
+
+
+
+
+
+
+
