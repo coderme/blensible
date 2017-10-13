@@ -15,10 +15,10 @@ def make_range(frames_count, hosts_count):
     start = 1
 
     while hosts_count > 0:
-        if hosts_count == 1 and origin_count != frames_count:
-            end = origin_count
-        else:
+        if hosts_count > 1:
             end = start + per_host - 1
+        else:
+            end = origin_count
 
         frames_range.append({
             "start": start,
