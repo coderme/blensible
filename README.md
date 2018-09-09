@@ -1,7 +1,5 @@
-# 3D Rendering Farm
-
-## Whats 3d Rendering Farm?
-* An "Ansible" playbook to distribute 3D movies frames rendering fairly between all servers in your "rendering_farm" group.
+# Blensible
+* An "Ansible" playbook to distribute Blender 3D movies frames rendering fairly between all servers in your "rendering_farm" group.
 
 ## Features
 * Fair distribution of frames rendering on all servers in rendering_farm.
