@@ -15,7 +15,7 @@
   * `output_format` : Output format, default to PNG.
   * `render_directory` : Working directory to store rendered frames.
   * `dest_directory` : Local directory to get gather all rendered frames
-* Finally run `ansible-playbook -i host run.yaml`
+* Finally run `ansible-playbook -i hosts run.yaml`
   
 
 ## Limitation
